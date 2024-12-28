@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="total_sales_report_action" model="ir.actions.report">
+        <field name="name">Salesperson Sales &amp; Payments Report</field>
+        <field name="model">total.sales.report</field>
+        <field name="binding_model_id" ref="model_total_sales_report"/>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">advicts_total_sales_report.total_sales_template</field>
+        <field name="report_file">advicts_total_sales_report.total_sales_template</field>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="total_sales_report_action_xlsx" model="ir.actions.report">
+        <field name="name">Salesperson Sales &amp; Payments Report</field>
+        <field name="model">total.sales.report</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">advicts_total_sales_report.total_sales_xlsx</field>
+        <field name="report_file">advicts_total_sales_report.total_sales_xlsx</field>
+    </record>
+
+</odoo>

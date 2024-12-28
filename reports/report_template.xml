@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="total_sales_template">
+        <t t-call="web.html_container"/>
+        <t t-call="web.external_layout">
+
+            <div class="page">
+                <style>
+                    @font-face {
+                    font-family: 'Tajawal'
+                    src: url('/fonts/Tajawal-Bold.ttf') format('truetype');
+                    }
+                    .badge {
+                    display: inline-block;
+                    padding: 0.25em 0.4em;
+                    font-size: 75%;
+                    font-weight: 700;
+                    line-height: 1;
+                    text-align: center;
+                    white-space: nowrap;
+                    vertical-align: baseline;
+                    border-radius: 0.25rem;
+                    }
+
+                </style>
+                <div class="row text-center mt-3 mb-3" style="font-family: 'Tajawal', sans-serif' !important">
+                    <div class="col-8">
+                        Salesperson Sales &amp; Payments Report
+                    </div>
+                    <div class="col-4">
+                        <t t-esc="start_date"/>
+                        -
+                        <t t-esc="end_date"/>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <table class="table table-condensed table-striped mt-3"
+                           style="font-family: 'Tajawal', sans-serif';border: 0px !important">
+                        <thead style="background-color:#ffd966 !important">
+                            <tr>
+                                <th align="center">
+                                    #
+                                </th>
+                                <th align="center">
+                                    Name
+                                </th>
+                                <th align="center">
+                                    Sales
+                                </th>
+                                <th align="center">
+                                    Payments
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="count" t-value="0"/>
+                            <t t-foreach="data" t-as="line">
+                                <t t-set="count" t-value="count + 1"/>
+
+                                <tr>
+                                    <td>
+                                        <span t-esc="count"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="line['salesperson']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="'{:,}'.format(line['sales_amount'])"/>
+                                        <span t-esc="company_currency"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="'{:,}'.format(line['payment_amount'])"/>
+                                        <span t-esc="company_currency"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+</odoo>
